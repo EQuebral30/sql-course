@@ -66,14 +66,13 @@ FROM
 
 -- Find missing dates using left join
 SELECT
-    md.TheDate AS TheDate
-    --,pa.AdmittedDate AS AdmittedDate
-    ,pa.NumAdmissions AS NumAdmissions
-    ,CASE WHEN pa.AdmittedDate IS NULL THEN 0 ELSE 'NumAdmissions' END AS ProperAdmissions
-    ,ISNULL(pa.NumAdmissions, 0) AS ProperAdmissions2
+    md.TheDate AS TheDate
+    --,pa.AdmittedDate AS AdmittedDate
+    ,pa.NumAdmissions AS NumAdmissions
+    , CASE WHEN pa.AdmittedDate IS NULL THEN 0 ELSE NumAdmissions END AS ProperAdmissions
+    , ISNULL(pa.NumAdmissions, 0) AS ProperAdmissions2
+    , COALESCE(pa.NumAdmissions, 0) AS ProperAdmissions3
 FROM
-    #MyDates md
-    LEFT JOIN #PatientAdmission pa ON md.TheDate = pa.AdmittedDate
---WHERE pa.AdmittedDate IS NULL
-
-
+    #MyDates md
+    LEFT JOIN #PatientAdmission pa ON md.TheDate = pa.AdmittedDate
+--WHERE pa.AdmittedDate IS NULL;
