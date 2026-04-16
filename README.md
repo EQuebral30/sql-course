@@ -1,2 +1,8 @@
-# sql-student-template
-Template that sets up a CodeSpace for students of the SQL courses
+# Elvina's SQL Course
+
+Learning about
+
+* window functions
+* _tally_ tables
+
+
